@@ -1,4 +1,7 @@
-#!/usr/bin/ruby
+# Author: Justin Knowlden
+# Adaption of jsmin.rb published by Uladzislau Latynski
+#
+# -------------------
 # jsmin.rb 2007-07-20
 # Author: Uladzislau Latynski
 # This work is a translation from C to Ruby of jsmin.c published by
@@ -36,11 +39,6 @@ require 'stringio'
 module Smurf
   class Javascript
     EOF = -1
-
-    def self.minify(content)
-      minifier = new(content)
-      minifier.minified
-    end
 
     @theA = ""
     @theB = ""
