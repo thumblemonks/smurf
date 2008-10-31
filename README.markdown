@@ -21,10 +21,12 @@ It's really an adaptation of Uladzislau Latynski's [jsmin.rb](http://javascript.
 The following are the rules I applied, gathered from various perusals around the Internet*s*
 
 1. Replace consecutive whitespace characters with a single space
-2. Remove whitespace around opening and closing brackets
-3. Remove the semi-colon just before the closing bracket
-4. Remove comments between `/* ... */` - this could be a problem (esp. for CSS hacks)
-5. Remove spaces around `;`, `:`, and `,` characters
+2. Remove whitespace around opening brackets
+3. Remove whitespace in front of closing brackets
+4. Remove the semi-colon just before the closing bracket
+5. Remove comments between `/* ... */` - this could be a problem (esp. for CSS hacks)
+6. Remove spaces around `;`, `:`, and `,` characters
+7. Ensure whitespace between closing brackets and periods
 
 ## Installation
 

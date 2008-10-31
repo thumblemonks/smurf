@@ -78,3 +78,7 @@ del, ins {
 smurf {
   content: "papa ";
 }
+
+.smurf {
+  color:blue;
+}
