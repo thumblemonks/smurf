@@ -30,9 +30,13 @@ del, ins {
 }
 
 smurf {
-  content: "papa ";
+  content: "pa pa";
 }
 
-.smurf {
+.smurf :link {
   color:blue;
+}
+
+smurf #smurf, :smurf .smurf {
+  color : black;
 }
