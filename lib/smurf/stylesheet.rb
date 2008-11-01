@@ -16,6 +16,7 @@ module Smurf
     module Minifier
       def compress_whitespace; gsub!(/\s+/, ' '); end
       def trim_close_bracket; gsub!(/;? ?\} ?/, '}'); end
+      # .*? means it's a non-greedy match
       def remove_comments; gsub!(/\/\*.*?\*\/ ?/, ''); end
       def seperate_bracket_from_class; gsub!(/\}\./, "} ."); end
       def trim(subs)
