@@ -1,0 +1,38 @@
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+sup {
+  vertical-align: text-top;
+}
+/*
+ hello, my name is sam
+*/
+sub {
+  vertical-align: text-bottom;
+}
+
+input, textarea, select{
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+input, textarea, select {
+  *font-size: 100%;
+}
+
+legend { color:#000; }
+
+del, ins {
+  text-decoration:none; 
+}
+
+smurf {
+  content: "papa ";
+}
+
+.smurf {
+  color:blue;
+}

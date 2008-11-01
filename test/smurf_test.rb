@@ -17,7 +17,7 @@ class SmurfTest < Test::Unit::TestCase
   context "when caching on for stylesheets" do
     setup do
       ActionController::Base.stubs(:perform_caching).returns(true)
-      stylesheet_link_tag('testing.css', :cache => 'cache/actual')
+      stylesheet_link_tag('foo', 'bar', :cache => 'cache/actual')
     end
 
     should_have_same_contents('stylesheets/cache/expected.css',
