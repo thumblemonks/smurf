@@ -33,10 +33,10 @@ smurf {
   content: "pa pa";
 }
 
-.smurf :link {
+.smurf :link li {
   color:blue;
 }
 
-smurf #smurf, :smurf .smurf {
+smurf #smurf , :smurf .smurf {
   color : black;
 }
