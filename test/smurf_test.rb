@@ -29,11 +29,6 @@ class SmurfTest < Test::Unit::TestCase
   context "minifying a non-existent pattern in a stylesheet" do
     setup {@himom = "hi{mom:super-awesome}"}
 
-    should "succeed when no spaces to compress" do
-      actual = @himom
-      assert_equal @himom, Smurf::Stylesheet.new(actual).minified
-    end
-
     # Thanks to someone named Niko for finding this
     should "succeed for removing comments" do
       actual = "hi {  mom:  super-awesome; } "
