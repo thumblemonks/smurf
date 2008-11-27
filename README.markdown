@@ -4,7 +4,7 @@ Smurf is a Rails plugin that does Javascript and CSS minification the way you wo
 
 Smurf ends that. Smurf - if installed and when caching is enabled for the environment - will nab the concatenated file content from Rails just before it saves it and minifies the content using either JSmin or a custom CSS compressor.
 
-Some cool things about Smurf, which also elude to the reasons I wrote it:
+Some cool things about Smurf, which also allude to the reasons I wrote it:
 
 * Smurf will only run when Rails needs to cache new files
 * It will never run on its own
