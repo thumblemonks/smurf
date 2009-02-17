@@ -130,7 +130,13 @@ module Smurf
             break if (@theA == @theB)
             raise "Unterminated string literal" if (@theA <= "\n")
             if (@theA == "\\")
-              @output.write @theA
+              # allow multi-line strings if each line is terminated by \\n (or \\r\n)
+              if ["\r", "\n"].include? peek
+                get # throw away the line ending
+                get if ["\r", "\n"].include? peek
+              else
+                @output.write @theA
+              end
               @theA = get
             end
           end
