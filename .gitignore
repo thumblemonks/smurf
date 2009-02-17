@@ -1,2 +1,2 @@
-log/*
-db/*
+test/rails/log/*
+test/rails/db/*
