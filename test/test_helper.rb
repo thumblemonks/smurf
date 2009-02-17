@@ -1,5 +1,7 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'environment'))
+ENV["RAILS_ROOT"] = File.expand_path(File.join(File.dirname(__FILE__), 'rails'))
+require File.expand_path(File.join(ENV["RAILS_ROOT"], 'config', 'environment'))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'init'))
 # load(File.dirname(__FILE__) + "/../db/schema.rb")
 
 require 'test_help'
@@ -22,7 +24,7 @@ class Test::Unit::TestCase
 
 private
   def asset_path
-    File.join(File.dirname(__FILE__), '..', 'public')
+    File.join(File.join(ENV["RAILS_ROOT"], 'public'))
   end
 
   def read_asset_file(relative_path)
