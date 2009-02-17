@@ -2,7 +2,6 @@ ENV["RAILS_ENV"] = "test"
 ENV["RAILS_ROOT"] = File.expand_path(File.join(File.dirname(__FILE__), 'rails'))
 require File.expand_path(File.join(ENV["RAILS_ROOT"], 'config', 'environment'))
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'init'))
-# load(File.dirname(__FILE__) + "/../db/schema.rb")
 
 require 'test_help'
 require 'ruby-debug'
