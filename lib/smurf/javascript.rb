@@ -60,7 +60,7 @@ module Smurf
       return false if !c || c == EOF
       return ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') ||
         (c >= 'A' && c <= 'Z') || c == '_' || c == '$' ||
-          c == '\\' || c[0] > 126)
+          c == '\\' || Array(c[0].bytes).first > 126)
     end
 
     # get -- return the next character from stdin. Watch out for lookahead. If
