@@ -4,6 +4,8 @@ class SmurfTest < Test::Unit::TestCase
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::AssetTagHelper
 
+  # Javascript
+
   context "when caching on for javascript" do
     setup do
       ActionController::Base.stubs(:perform_caching).returns(true)
@@ -13,6 +15,22 @@ class SmurfTest < Test::Unit::TestCase
     should_have_same_contents('javascripts/cache/expected.js',
       'javascripts/cache/actual.js')
   end # when caching on for javascript
+
+  context "minifying multi-line strings in javascript" do
+    setup do
+      input = StringIO.new()
+      input.puts("var foo='bar \\")
+      input.puts("  bar \\")
+      input.puts("  baz';")
+      input.rewind
+      @content = input.read
+    end
+
+    should "not affect the string" do
+      expected = "\n" + @content.gsub(/\\?\r?\n/, '')
+      assert_equal expected, Smurf::Javascript.new(@content).minified
+    end
+  end
 
   # Stylesheet
 
