@@ -50,10 +50,10 @@ This is the mechanism I used for testing that Smurf works for all versions:
 
     rake && rake RAILS_GEM_VERSION=2.1.2
 
-## Contact
+## Meta
 
-Justin Knowlden <gus@gusg.us>
+Author: Justin Knowlden <gus@thumblemonks.com>
 
-## License
+Contributions from: Lance Ivy, Scott White, Daniel Schierbeck
 
-See MIT-LICENSE
+See MIT-LICENSE for licensing information
