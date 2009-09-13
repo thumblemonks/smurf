@@ -50,7 +50,7 @@ Also make sure to at least have this setting in your production.rb:
 
 ## Testing
 
-If you want to test Smurf and you don't want to test with the latest version of Rails as of this writing (2.2.2), then do something like the following:
+If you want to test Smurf and you don't want to test with the latest version of Rails, then do something like the following (using 2.1.2 as an example):
 
     rake RAILS_GEM_VERSION=2.1.2
 
