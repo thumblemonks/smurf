@@ -44,7 +44,7 @@ Also make sure to at least have this setting in your production.rb:
 
 [bcarpenter](http://github.com/bcarpenter) reminded all of us that Rails will generate real files if you set `config.action_controller.perform_caching` to `true`. If you happen to do this while developing your fantastic Rails app you may also accidentally commit them to your development repository. This is not what you want as it can send you and your awesome developer friends down the wrong rabbit hole ... and then when you figure out the problem you may be understandably and misguidedly pissed at Smurf :)
 
-[bcarpenter](http://github.com/bcarpenter) didn't seem to mad since he reached out to me (whew!) and suggested I add a little comment about making sure to ignore the generated cache files/directories in your SCM of choice. If you happen to be using git, be sure to do something to the effect of the following in your `.gitignore` file:
+[bcarpenter](http://github.com/bcarpenter) didn't seem too mad since he reached out to me (whew!) and suggested I add a little comment about making sure to ignore the generated cache files/directories in your SCM of choice. If you happen to be using git, be sure to do something to the effect of the following in your `.gitignore` file:
 
     public/*/cache/*
 
