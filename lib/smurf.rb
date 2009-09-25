@@ -1,7 +1,7 @@
 require 'smurf/javascript'
 require 'smurf/stylesheet'
 
-if Rails.version =~ /^2\.2\./
+if Rails.respond_to?(:version) && Rails.version =~ /^2\.2\./
   # Support for Rails >= 2.2.x
   module Smurf
 
