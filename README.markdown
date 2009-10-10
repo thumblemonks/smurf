@@ -12,7 +12,7 @@ Some cool things about Smurf, which also allude to the reasons I wrote it:
 * Other than installing it, you don't need to do anything
 * It just gets out of your way
 
-Smurf will work with any version of Rails `2.x`; including Rails `2.2.2`.
+Smurf will work with any version of Rails `2.x`; including Rails `2.3.4` and `2.1.2`.
 
 ### JSmin
 
@@ -32,13 +32,27 @@ The following are the rules I applied, gathered from various perusals around the
 
 ## Installation
 
-    ./script/plugin install git://github.com/thumblemonks/smurf.git
+I like gems. So, I suggest you install Smurf as gem. It's pretty simple, assuming you have added Gem Cutter to your list of gem sources. If you have not, do this:
+
+    sudo gem sources -a http://gemcutter.org
+
+Then, install Smurf as a gem:
+
+    sudo gem install smurf
 
 Then, wherever you define `javascript_include_tag` or `stylesheet_link_tag`, make sure to add the standard `:cache => true` or `:cache => 'some_bundle'` options.
 
 Also make sure to at least have this setting in your production.rb:
 
     config.action_controller.perform_caching = true
+
+#### As a plugin
+
+If you really feel like it, go ahead and install Smurf as a plugin. This should do it:
+
+    ./script/plugin install git://github.com/thumblemonks/smurf.git
+
+Then do the other stuff for setting up Smurf in your Rails environment.
 
 ### Small suggestion
 
@@ -50,13 +64,13 @@ Also make sure to at least have this setting in your production.rb:
 
 ## Testing
 
-If you want to test Smurf and you don't want to test with the latest version of Rails, then do something like the following (using 2.2.2 as an example):
+If you want to test Smurf and you don't want to test with the latest version of Rails, then do something like the following (using 2.3.4 as an example):
 
-    rake RAILS_GEM_VERSION=2.2.2
+    rake RAILS_GEM_VERSION=2.3.4
 
 This is the mechanism I used for testing that Smurf works for all versions:
 
-    rake && rake RAILS_GEM_VERSION=2.2.2
+    rake && rake RAILS_GEM_VERSION=2.2.2 && rake RAILS_GEM_VERSION=2.1.2
 
 ## Meta
 

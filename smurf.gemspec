@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name = "smurf"
   s.summary = "Rails plugin to automatically minify JS and CSS when their bundles get cached"
   s.description = "Rails plugin to automatically minify JS and CSS when their bundles get cached. Send in those patches!"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
   s.authors = ["Justin Knowlden"]
   s.email = %w[gus@thumblemonks.com]
   s.homepage = "http://github.com/thumblemonks/smurf"
@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
   s.test_files = %w[
     test/rails/app/controllers/application.rb
     test/rails/config/boot.rb
-    test/rails/config/database.yml
     test/rails/config/environment.rb
     test/rails/config/environments/test.rb
     test/rails/config/routes.rb
