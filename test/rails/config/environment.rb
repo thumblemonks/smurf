@@ -1,21 +1,15 @@
-# Be sure to restart your server when you modify this file
-
-# Uncomment below to force Rails into production mode when
-# you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
-
 # Specifies gem version of Rails to use when vendor/rails is not present
 unless defined? RAILS_GEM_VERSION
-  RAILS_GEM_VERSION = (ENV['RAILS_GEM_VERSION'] || '2.3.2')
+  RAILS_GEM_VERSION = (ENV['RAILS_GEM_VERSION'] || '2.3.4')
+  STDOUT.puts "TESTING with RAILS_GEM_VERSION = #{RAILS_GEM_VERSION}"
 end
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem 'thoughtbot-shoulda', :lib => 'shoulda/rails',
-    :source => 'http://gems.github.com'
-  config.gem 'sqlite3-ruby', :lib => 'sqlite3'
+  # Don't need 'em
+  config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
   config.action_controller.session = {
     :session_key => '_smurf_session',

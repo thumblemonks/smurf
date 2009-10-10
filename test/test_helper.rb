@@ -3,30 +3,32 @@ ENV["RAILS_ROOT"] = File.expand_path(File.join(File.dirname(__FILE__), 'rails'))
 require File.expand_path(File.join(ENV["RAILS_ROOT"], 'config', 'environment'))
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'init'))
 
-require 'test_help'
-require 'ruby-debug'
+require 'riot'
 
-class Test::Unit::TestCase
-
-  def teardown
-    artifacts = Dir.glob(File.join(asset_path, '**', 'cache', 'actual.*'))
-    FileUtils.rm(artifacts)
-  end
-  
-  def self.should_have_same_contents(expected_path, actual_path)
-    should "have the same file contents as #{expected_path}" do
-      expected = read_asset_file(expected_path)
-      actual = read_asset_file(actual_path)
-      assert_equal expected, actual
-    end
+class AssetFile
+  def self.base_path
+    @path ||= File.join(File.join(ENV["RAILS_ROOT"], 'public'))
   end
 
-private
-  def asset_path
-    File.join(File.join(ENV["RAILS_ROOT"], 'public'))
+  def self.read(relative_path)
+    File.read(File.join(base_path, relative_path))
   end
+end
 
-  def read_asset_file(relative_path)
-    File.read(File.join(asset_path, relative_path))
+class Riot::Context
+  def should_have_same_contents(expected_path, actual_path)
+    asserts "#{actual_path} has the same file contents as #{expected_path}" do
+      AssetFile.read(actual_path)
+    end.equals(AssetFile.read(expected_path))
   end
+end
+
+Riot::Situation.instance_eval do
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::AssetTagHelper
+end
+
+at_exit do
+  artifacts = Dir.glob(File.join(AssetFile.base_path, '**', 'cache', 'actual.*'))
+  FileUtils.rm(artifacts)
 end

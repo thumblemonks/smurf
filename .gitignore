@@ -1,5 +1,4 @@
 log/*
-db/*
 *.gem
 test/rails/log/*
 test/rails/db/*

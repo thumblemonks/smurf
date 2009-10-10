@@ -16,10 +16,8 @@ if Rails.version =~ /^2\.2\./
     end # StylesheetSources
 
   end # ActionView::Helpers::AssetTagHelper::AssetTag
-  ActionView::Helpers::AssetTagHelper::JavaScriptSources.send(
-    :include, Smurf::JavaScriptSources)
-  ActionView::Helpers::AssetTagHelper::StylesheetSources.send(
-    :include, Smurf::StylesheetSources)
+  ActionView::Helpers::AssetTagHelper::JavaScriptSources.send(:include, Smurf::JavaScriptSources)
+  ActionView::Helpers::AssetTagHelper::StylesheetSources.send(:include, Smurf::StylesheetSources)
 else
   # Support for Rails <= 2.1.x
   module ActionView::Helpers::AssetTagHelper

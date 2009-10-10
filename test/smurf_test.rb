@@ -1,82 +1,56 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 
-class SmurfTest < Test::Unit::TestCase
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::AssetTagHelper
+# Javascript
 
-  # Javascript
-
-  context "when caching on for javascript" do
-    setup do
-      ActionController::Base.stubs(:perform_caching).returns(true)
-      javascript_include_tag('testing.js', :cache => 'cache/actual')
-    end
-
-    should_have_same_contents('javascripts/cache/expected.js',
-      'javascripts/cache/actual.js')
-  end # when caching on for javascript
-
-  context "minifying multi-line strings in javascript" do
-    setup do
-      input = StringIO.new()
-      input.puts("var foo='bar \\")
-      input.puts("  bar \\")
-      input.puts("  baz';")
-      input.rewind
-      @content = input.read
-    end
-
-    should "not affect the string" do
-      expected = "\n" + @content.gsub(/\\?\r?\n/, '')
-      assert_equal expected, Smurf::Javascript.new(@content).minified
-    end
+context "link tags when caching on" do
+  setup do
+    javascript_include_tag('testing', :cache => 'cache/actual')
+    stylesheet_link_tag('foo', 'bar', :cache => 'cache/actual')
   end
 
-  # Stylesheet
+  should_have_same_contents('javascripts/cache/expected.js', 'javascripts/cache/actual.js')
+  should_have_same_contents('stylesheets/cache/expected.css', 'stylesheets/cache/actual.css')
+end # link tags when caching on
 
-  context "when caching on for stylesheets" do
-    setup do
-      ActionController::Base.stubs(:perform_caching).returns(true)
-      stylesheet_link_tag('foo', 'bar', :cache => 'cache/actual')
-    end
+context "minifying multi-line strings in javascript" do
+  setup do
+    input = StringIO.new()
+    input.puts("var foo='bar \\")
+    input.puts("  bar \\")
+    input.puts("  baz';")
+    input.rewind
+    input.read
+  end
 
-    should_have_same_contents('stylesheets/cache/expected.css',
-      'stylesheets/cache/actual.css')
-  end # when caching on for stylesheets
-
-  context "minifying a non-existent pattern in a stylesheet" do
-    setup {@himom = "hi{mom:super-awesome}"}
-
-    # Thanks to someone named Niko for finding this
-    should "succeed for removing comments" do
-      actual = "hi {  mom:  super-awesome; } "
-      assert_equal @himom, Smurf::Stylesheet.new(actual).minified
-    end
-
-    should "succeed when no spaces to compress" do
-      actual = @himom
-      assert_equal @himom, Smurf::Stylesheet.new(actual).minified
-    end
-
-    should "succeed when no outside or inside blocks" do
-      # nothing outside, means nothing inside. they are complementary
-      actual = "how-did:  this-happen;  typo: maybe;}"
-      expected = "how-did: this-happen; typo: maybe}"
-      assert_equal expected, Smurf::Stylesheet.new(actual).minified
-    end
-
-    should "succeed when no last semi-colon in block" do
-      actual = "hi {  mom:  super-awesome } "
-      assert_equal @himom, Smurf::Stylesheet.new(actual).minified
-    end
-
-    should "succeed across all parsers when no content provided" do
-      actual = ""
-      assert_equal "", Smurf::Stylesheet.new(actual).minified
-    end
-
-    should "succeed if nil provided" do
-      assert_nil Smurf::Stylesheet.new(nil).minified
-    end
-  end # minifying a non-existent pattern
+  should "not affect the string" do
+    Smurf::Javascript.new(topic).minified
+  end.equals("\nvar foo='bar   bar   baz';")
 end
+
+context "minifying a non-existent pattern in a stylesheet" do
+  # Thanks to someone named Niko for finding this
+  should "succeed for removing comments" do
+    Smurf::Stylesheet.new("hi {  mom:  super-awesome; } ").minified
+  end.equals("hi{mom:super-awesome}")
+
+  should "succeed when no spaces to compress" do
+    Smurf::Stylesheet.new("hi{mom:super-awesome}").minified
+  end.equals("hi{mom:super-awesome}")
+
+  # nothing outside, means nothing inside. they are complementary
+  should "succeed when no outside or inside blocks" do
+    Smurf::Stylesheet.new("how-did:  this-happen;  typo: maybe;}").minified
+  end.equals("how-did: this-happen; typo: maybe}")
+
+  asserts "when no last semi-colon in block" do
+    Smurf::Stylesheet.new("hi {  mom:  super-awesome } ").minified
+  end.equals("hi{mom:super-awesome}")
+
+  asserts "empty string when no content provided" do
+    Smurf::Stylesheet.new("").minified
+  end.equals("")
+
+  asserts "nil even if nil provided" do
+    Smurf::Stylesheet.new(nil).minified
+  end.nil
+end # minifying a non-existent pattern in a stylesheet
