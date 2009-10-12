@@ -1,8 +1,8 @@
 require 'smurf/javascript'
 require 'smurf/stylesheet'
 
-if Rails.respond_to?(:version) && Rails.version =~ /^2\.2\./
-  # Support for Rails >= 2.2.x
+if Rails.respond_to?(:version) && Rails.version == "2.2.1"
+  # Support for Rails == 2.2.1
   module Smurf
 
     module JavaScriptSources
@@ -19,7 +19,7 @@ if Rails.respond_to?(:version) && Rails.version =~ /^2\.2\./
   ActionView::Helpers::AssetTagHelper::JavaScriptSources.send(:include, Smurf::JavaScriptSources)
   ActionView::Helpers::AssetTagHelper::StylesheetSources.send(:include, Smurf::StylesheetSources)
 else
-  # Support for Rails <= 2.1.x
+  # Support for everything else
   module ActionView::Helpers::AssetTagHelper
   private
     def join_asset_file_contents_with_minification(files)
@@ -33,4 +33,4 @@ else
     end
     alias_method_chain :join_asset_file_contents, :minification
   end # ActionView::Helpers::AssetTagHelper
-end
+# end
