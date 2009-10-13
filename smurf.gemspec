@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name = "smurf"
   s.summary = "Rails plugin to automatically minify JS and CSS when their bundles get cached"
   s.description = "Rails plugin to automatically minify JS and CSS when their bundles get cached. Send in those patches!"
-  s.version = "1.0.2"
+  s.version = "1.0.3"
   s.authors = ["Justin Knowlden"]
   s.email = %w[gus@thumblemonks.com]
   s.homepage = "http://github.com/thumblemonks/smurf"
