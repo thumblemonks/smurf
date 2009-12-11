@@ -1,6 +1,6 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 unless defined? RAILS_GEM_VERSION
-  RAILS_GEM_VERSION = (ENV['RAILS_GEM_VERSION'] || '2.3.4')
+  RAILS_GEM_VERSION = (ENV['RAILS_GEM_VERSION'] || '2.3.5')
   STDOUT.puts "TESTING with RAILS_GEM_VERSION = #{RAILS_GEM_VERSION}"
 end
 
