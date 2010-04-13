@@ -1,6 +1,5 @@
 ENV["RAILS_ENV"] = "test"
 require ::File.expand_path('../rails/config/environment',  __FILE__)
-# DELETE THIS FILE TOO require File.expand_path(File.join(File.dirname(__FILE__), '..', 'init'))
 
 Rails.public_path = Rails.root + "test" + "rails" + "public"
 require 'riot'
