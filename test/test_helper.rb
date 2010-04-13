@@ -1,17 +1,20 @@
 ENV["RAILS_ENV"] = "test"
-ENV["RAILS_ROOT"] = File.expand_path(File.join(File.dirname(__FILE__), 'rails'))
-require File.expand_path(File.join(ENV["RAILS_ROOT"], 'config', 'environment'))
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'init'))
+require ::File.expand_path('../rails/config/environment',  __FILE__)
+# DELETE THIS FILE TOO require File.expand_path(File.join(File.dirname(__FILE__), '..', 'init'))
 
+Rails.public_path = Rails.root + "test" + "rails" + "public"
 require 'riot'
+require 'ostruct'
+
+require 'smurf'
 
 class AssetFile
   def self.base_path
-    @path ||= File.join(File.join(ENV["RAILS_ROOT"], 'public'))
+    @path ||= Rails.public_path
   end
 
   def self.read(relative_path)
-    File.read(File.join(base_path, relative_path))
+    File.read(base_path + relative_path)
   end
 end
 
@@ -23,9 +26,19 @@ class Riot::Context
   end
 end
 
-Riot::Situation.instance_eval do
+class Riot::Situation
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::AssetTagHelper
+
+  def controller; nil; end
+
+  def config
+    OpenStruct.new({
+      :assets_dir => Rails.public_path,
+      :javascripts_dir => Rails.public_path + "javascripts",
+      :stylesheets_dir => Rails.public_path + "stylesheets"
+    })
+  end
 end
 
 at_exit do
