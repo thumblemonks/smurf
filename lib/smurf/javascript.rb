@@ -38,6 +38,8 @@ require 'stringio'
 
 module Smurf
   class Javascript
+    def self.minifies?(paths) !paths.grep(%r[/javascripts]).empty?; end
+
     EOF = -1
 
     @theA = ""
