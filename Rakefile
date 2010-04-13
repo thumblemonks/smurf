@@ -5,11 +5,11 @@ require 'rake/rdoctask'
 desc 'Default: run unit tests.'
 task :default => :test
 
-desc 'Test the load_model plugin.'
+desc 'Test the smurf plugin.'
 Rake::TestTask.new(:test) do |t|
   t.libs += ['test']
   t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+  t.verbose = false # Verbose is just dumb
 end
 
 desc 'Generate documentation for the smurf plugin.'
