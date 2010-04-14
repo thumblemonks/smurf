@@ -1,4 +1,4 @@
-gem "rails", "3.0.0.beta"
+gem "rails", "3.0.0.beta2"
 
 group :test do
   gem "ruby-debug"

@@ -5,7 +5,8 @@ Rails.public_path = Rails.root + "test" + "rails" + "public"
 require 'riot'
 require 'ostruct'
 
-require 'smurf'
+# require 'smurf'
+require ::File.expand_path('../../lib/smurf',  __FILE__)
 
 class AssetFile
   def self.base_path
@@ -35,7 +36,8 @@ class Riot::Situation
     OpenStruct.new({
       :assets_dir => Rails.public_path,
       :javascripts_dir => Rails.public_path + "javascripts",
-      :stylesheets_dir => Rails.public_path + "stylesheets"
+      :stylesheets_dir => Rails.public_path + "stylesheets",
+      :perform_caching => true
     })
   end
 end

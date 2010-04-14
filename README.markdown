@@ -44,7 +44,7 @@ Then, wherever you define `javascript_include_tag` or `stylesheet_link_tag`, mak
 
 Also make sure to at least have this setting in your production.rb:
 
-    config.action_controller.perform_caching = true
+    config.perform_caching = true
 
 ### Small suggestion
 

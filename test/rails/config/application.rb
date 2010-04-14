@@ -2,8 +2,7 @@ require File.expand_path('../boot', __FILE__)
 $:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
+require "action_view/railtie"
 
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
@@ -17,10 +16,8 @@ module Smurf
     # Add additional load paths for your own custom dirs
     # config.load_paths += %W( #{config.root}/... )
 
-    config.action_controller.session = {
-      :key    => '_smurf_session',
-      :secret => '731d6426b731d6426b731d6426b731d6426b731d6426b731d6426b731d6426b'
-    }
+    config.session_store :cookie_store, {:key => "_smurf_session"}
+    config.cookie_secret = '731d6426b731d6426b731d6426b731d6426b731d6426b731d6426b731d6426b'
     
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
