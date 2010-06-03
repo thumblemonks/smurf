@@ -3,3 +3,4 @@ log/*
 test/rails/log/*
 test/rails/db/*
 test/rails/public/*/cache/*
+pkg/*
