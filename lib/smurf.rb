@@ -1,5 +1,6 @@
 require 'smurf/javascript'
 require 'smurf/stylesheet'
+require 'smurf/noop'
 
 module ActionView::Helpers::AssetTagHelper
 private

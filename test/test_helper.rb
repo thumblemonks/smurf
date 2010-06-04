@@ -1,7 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require ::File.expand_path('../rails/config/environment',  __FILE__)
 
-Rails.public_path = Rails.root + "test" + "rails" + "public"
+# Rails.public_path = Rails.root + "test" + "rails" + "public"
 require 'riot'
 require 'ostruct'
 
@@ -35,14 +35,14 @@ class Riot::Situation
   def config
     OpenStruct.new({
       :assets_dir => Rails.public_path,
-      :javascripts_dir => Rails.public_path + "javascripts",
-      :stylesheets_dir => Rails.public_path + "stylesheets",
+      :javascripts_dir => Rails.public_path + "/javascripts",
+      :stylesheets_dir => Rails.public_path + "/stylesheets",
       :perform_caching => true
     })
   end
 end
 
 at_exit do
-  artifacts = Dir.glob(File.join(AssetFile.base_path, '**', 'cache', 'actual-*.*'))
+  artifacts = Dir.glob(File.join(AssetFile.base_path, '**', 'cache', 'actual*.*'))
   FileUtils.rm(artifacts)
 end
