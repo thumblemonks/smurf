@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/smurf.rb",
      "lib/smurf/javascript.rb",
+     "lib/smurf/noop.rb",
      "lib/smurf/stylesheet.rb",
-     "rails/init.rb",
      "smurf.gemspec",
      "test/integration_test.rb",
      "test/javascript_test.rb",
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
      "test/rails/public/javascripts/projwcss/jscss.css",
      "test/rails/public/javascripts/testing.js",
      "test/rails/public/stylesheets/bar.css",
-     "test/rails/public/stylesheets/cache/expected.css",
+     "test/rails/public/stylesheets/cache/expected-basic.css",
      "test/rails/public/stylesheets/foo.css",
      "test/stylesheet_test.rb",
      "test/test_helper.rb"
