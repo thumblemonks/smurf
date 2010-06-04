@@ -3,18 +3,9 @@ require 'smurf/stylesheet'
 
 module ActionView::Helpers::AssetTagHelper
 private
-  # After rebasing finishes, apply these of changes
-  # def join_asset_file_contents_with_minification(files)
-  #   content = join_asset_file_contents_without_minification(files)
-  #   if !files.grep(/javascripts.+\.js/).empty?
-  #     content = Smurf::Javascript.new(content).minified
-  #   elsif !files.grep(/stylesheets.+\.css/).empty?
-  #     content = Smurf::Stylesheet.new(content).minified
-  #   end
-  #   content
-  # end
-
-  def minifiers; @@minifiers ||= [Smurf::Javascript, Smurf::Stylesheet]; end
+  def minifiers
+    @@minifiers ||= [Smurf::Javascript, Smurf::Stylesheet, Smurf::Noop]
+  end
 
   def join_asset_file_contents_with_minification(paths)
     content = join_asset_file_contents_without_minification(paths)

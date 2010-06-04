@@ -1,6 +1,6 @@
 module Smurf
   class Stylesheet
-    def self.minifies?(paths) !paths.grep(%r[/stylesheets]).empty?; end
+    def self.minifies?(paths) !paths.grep(%r[\.css(\?\d+)?$]).empty?; end
 
     def initialize(content)
       @content = content.nil? ? nil : minify(content)

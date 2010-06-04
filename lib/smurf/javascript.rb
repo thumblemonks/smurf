@@ -38,7 +38,7 @@ require 'stringio'
 
 module Smurf
   class Javascript
-    def self.minifies?(paths) !paths.grep(%r[/javascripts]).empty?; end
+    def self.minifies?(paths) !paths.grep(%r[\.js(\?\d+)?$]).empty?; end
 
     EOF = -1
 

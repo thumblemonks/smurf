@@ -43,6 +43,6 @@ class Riot::Situation
 end
 
 at_exit do
-  artifacts = Dir.glob(File.join(AssetFile.base_path, '**', 'cache', 'actual.*'))
+  artifacts = Dir.glob(File.join(AssetFile.base_path, '**', 'cache', 'actual-*.*'))
   FileUtils.rm(artifacts)
 end
