@@ -12,7 +12,7 @@ Some cool things about Smurf, which also allude to the reasons I wrote it:
 * Other than installing it, you don't need to do anything
 * It just gets out of your way
 
-Smurf will work with most versions of Rails `2.3.x` and above; including Rails `3.0.0.beta1`.
+Smurf will work with most versions of Rails `2.3.x` and above; including Rails `3.0.0`.
 
 ### JSmin
 
@@ -29,6 +29,7 @@ The following are the rules I applied, gathered from various perusals around the
 5. Remove comments between `/* ... */` - this could be a problem (esp. for CSS hacks)
 6. Remove spaces around `;`, `:`, and `,` characters
 7. Ensure whitespace between closing brackets and periods
+8. Preserves [conditional comments](http://msdn.microsoft.com/en-us/library/121hztk3(VS.94).aspx) in IE (ex: /*@cc_on document.write("this will only write in IE") @*/)
 
 ## Installation
 
@@ -66,6 +67,6 @@ If you want to play around with different versions, you'll need to update the Ge
 
 Author: Justin Knowlden <gus@thumblemonks.com>
 
-Contributions from: Lance Ivy, Scott White, Daniel Schierbeck
+Contributions from: Lance Ivy, Scott White, Daniel Schierbeck, Paul Hepworth
 
 See MIT-LICENSE for licensing information

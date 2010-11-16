@@ -28,4 +28,18 @@ context "Javascript minifier" do
       Smurf::Javascript.new(topic).minified
     end.equals("\nvar foo='bar   bar   baz';")
   end # working with multi-line strings
+
+  context "working with conditional compilation on IE" do
+    setup do
+      input = StringIO.new()
+      input.puts("/*@cc_on(function(){document.write('this will write out to IE browsers)});@*/")
+      input.rewind
+      input.read
+    end
+
+    should "not affect the string" do
+      Smurf::Javascript.new(topic).minified
+    end.equals("/*@cc_on(function(){document.write('this will write out to IE browsers)});@*/")
+  end # working with conditional compilation on IE
+
 end # Javascript minifier

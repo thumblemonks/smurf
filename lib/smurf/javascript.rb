@@ -77,13 +77,14 @@ module Smurf
     end
 
     # Get the next character without getting it.
-    def peek()
-      lookaheadChar = @input.getc
-      @input.ungetc(lookaheadChar)
-      return lookaheadChar.chr
+    def peek(aheadCount=1)
+      history = []
+      aheadCount.times { history << @input.getc }
+      history.reverse.each { |chr| @input.ungetc(chr) }
+      return history.last.chr
     end
 
-    # mynext -- get the next character, excluding comments.
+    # mynext -- get the next character, excluding legitiment comments.
     # peek() is used to see if a '/' is followed by a '/' or '*'.
     def mynext()
       c = get
@@ -96,7 +97,7 @@ module Smurf
             end
           end
         end
-        if(peek == "*")
+        if(peek == "*" && peek(2) != "@") # not conditional comments
           get
           while(true)
             case get
@@ -151,7 +152,8 @@ module Smurf
                              @theA == "&" || @theA == "|" || @theA == "?" ||
                              @theA == "{" || @theA == "}" || @theA == ";" ||
                              @theA == "\n"))
-          @output.write @theA
+
+          @output.write(@theA) unless peek(2) == '@'
           @output.write @theB
           while (true)
             @theA = get
