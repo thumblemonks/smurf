@@ -9,6 +9,7 @@ Bundler.require :default, Rails.env
 
 module Smurf
   class Application < Rails::Application
+    config.consider_all_requests_local = true
     config.session_store :cookie_store, {:key => "_smurf_session"}
     config.secret_token = "i own you." * 3
     

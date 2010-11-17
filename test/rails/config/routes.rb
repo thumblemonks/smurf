@@ -1,5 +1,3 @@
-Smurf::Application.routes.draw do |map|
-  map.connect ':controller/service.wsdl', :action => 'wsdl'
-  map.connect ':controller/:action/:id.:format'
-  map.connect ':controller/:action/:id'
+Smurf::Application.routes.draw do
+  match '/:controller(/:action(/:id))'
 end

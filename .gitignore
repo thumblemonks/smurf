@@ -6,3 +6,4 @@ test/rails/public/*/cache/*
 pkg/*
 .bundle
 Gemfile.lock
+.rvmrc

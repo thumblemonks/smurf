@@ -84,7 +84,7 @@ module Smurf
       return history.last.chr
     end
 
-    # mynext -- get the next character, excluding legitiment comments.
+    # mynext -- get the next character, excluding legitimate comments.
     # peek() is used to see if a '/' is followed by a '/' or '*'.
     def mynext()
       c = get
