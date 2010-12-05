@@ -29,7 +29,7 @@ The following are the rules I applied, gathered from various perusals around the
 5. Remove comments between `/* ... */` - this could be a problem (esp. for CSS hacks)
 6. Remove spaces around `;`, `:`, and `,` characters
 7. Ensure whitespace between closing brackets and periods
-8. Preserves [conditional comments](http://msdn.microsoft.com/en-us/library/121hztk3(VS.94).aspx) in IE (ex: /*@cc_on document.write("this will only write in IE") @*/)
+8. Preserves [conditional comments](http://msdn.microsoft.com/en-us/library/121hztk3(VS.94\).aspx) in IE (ex: `/*@cc_on document.write("this will only write in IE") @*/`)
 
 ## Installation
 
@@ -61,7 +61,7 @@ Simple:
 
     rake
 
-If you want to play around with different versions, you'll need to update the Gemfile version of rails. While Smurf itself should work as is with Rails 3 and Rails 2.3.x, the test setup is different enough between 3 and 2.3.x that I can't make guarantees. If you need a previous version, look for the appropriate tag in the source code.
+If you want to play around with different versions, you'll need to update the Gemfile version of rails. While Smurf itself should work as is with Rails 3 and Rails 2.3.x, the test setup is different enough between 3 and 2.3.x that I can't make guarantees. Currently tests require Rails 3 to be run successfully. If you need a previous version of smurf, look for the appropriate tag in the source code.
 
 ## Meta
 
