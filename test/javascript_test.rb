@@ -28,6 +28,19 @@ context "Javascript minifier" do
       Smurf::Javascript.new(topic).minified
     end.equals("\nvar foo='bar   bar   baz';")
   end # working with multi-line strings
+  
+  context "working with single-line comments without EOL." do
+    setup do
+      input = StringIO.new()
+      input.write("// I should not crash")
+      input.rewind
+      input.read
+    end
+
+    should "handle a single line comment at the end of the file without an EOL" do
+      Smurf::Javascript.new(topic).minified
+    end.equals("")
+  end
 
   context "working with conditional compilation on IE" do
     setup do

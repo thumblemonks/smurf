@@ -92,7 +92,7 @@ module Smurf
         if(peek == "/")
           while(true)
             c = get
-            if (c <= "\n")
+            if (c == -1 || c <= "\n")
             return c
             end
           end
