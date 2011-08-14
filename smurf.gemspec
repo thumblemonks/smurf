@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.extra_rdoc_files = ["README.markdown"]
 
-  s.add_dependency 'rails', '3.0.3'
-  s.add_dependency 'riot', '>=0.12.0'
+  s.add_development_dependency 'rails', '3.0.3'
+  s.add_development_dependency 'riot', '>=0.12.0'
 end
 
 
